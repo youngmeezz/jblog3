@@ -11,6 +11,7 @@
 </head>
 <body>
 	<div class="center-content">
+	<c:import url="/WEB-INF/views/includes/header.jsp"/>
 		<h1 class="logo">JBlog</h1>
 		<ul class="menu">
 			<li><a href="${pageContext.servletContext.contextPath }/user/login">로그인</a></li>
@@ -29,6 +30,8 @@
 				<input type="radio" name="which" value="blog-user"> <label>블로거</label>
 			</fieldset>
 		</form>
+<%-- 		<c:import url="/WEB-INF/views/includes/navigation.jsp"/> --%>
+		<c:import url="/WEB-INF/views/includes/footer.jsp"/>
 	</div>
 </body>
 </html>

@@ -98,6 +98,12 @@
 	   <property name="order" value="1" />
 	</bean>
 	
+	<!-- 여러개의 AutoWired를 사용하기 위한 Qualifier 설정 -->
+	<bean id="userDao" class="kr.co.itcen.jblog.repository.UserDao"/>
+	<bean id="blogDao" class="kr.co.itcen.jblog.repository.BlogDao"/>
+	<bean id="categoryDao" class="kr.co.itcen.jblog.repository.CategoryDao"/>
+	 
+	
 	<!-- 멀티파트 리졸버 -->
 <!-- 	<bean id="multipartResolver" 
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

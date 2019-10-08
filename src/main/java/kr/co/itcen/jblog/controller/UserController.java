@@ -29,7 +29,7 @@ public class UserController {
 	
 	//회원 가입 할때 POST해서 데이터 입력해줄 url 매핑 (회원 가입 폼 만들기)
 	@RequestMapping(value = "join" , method = RequestMethod.POST)
-	public String join(@ModelAttribute("userVo") @Valid UserVo vo,
+	public String join(@ModelAttribute/*("userVo")*/ @Valid UserVo vo,
 			BindingResult result,
 			Model model) {
 		
@@ -37,7 +37,7 @@ public class UserController {
 			model.addAllAttributes(result.getModel());
 			return "user/join";
 		}
-		
+		System.out.println("콘트롤러");
 		userService.join(vo);
 		return "redirect:/user/joinsuccess";
 	}
@@ -52,5 +52,4 @@ public class UserController {
 	public String login() {
 		return "user/login";
 	}
-	
 }

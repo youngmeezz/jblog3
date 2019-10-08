@@ -19,7 +19,7 @@
 			<li><a href="${pageContext.servletContext.contextPath }/user/logout">로그아웃</a></li>
 			<li><a href="${pageContext.servletContext.contextPath }/blog/blog-main">내블로그</a></li>
 		</ul>
-		<form class="login-form" method="post" action="${pageContext.servletContext.contextPath }/user/login">
+		<form class="login-form" method="post" action="${pageContext.servletContext.contextPath }/">
       		<label>아이디</label> <input type="email" name="id">
       		<label>패스워드</label> <input type="password" name="password">
       		<input type="submit" value="로그인">

@@ -28,7 +28,7 @@ public class UserDao {
 
 	//회원 정보 로그인
 	public UserVo get(UserVo vo) {
-		UserVo result = sqlSession.selectOne("user.getById",vo);
+		UserVo result = sqlSession.selectOne("user.getIdAndPassword",vo);
 		return result;
 	}
 
