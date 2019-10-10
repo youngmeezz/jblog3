@@ -13,6 +13,9 @@ public class AdminService {
 	AdminDao adminDao;
 	public void update(BlogVo blogvo) {
 		adminDao.update(blogvo);
-		
+	}
+	
+	public void write(BlogVo blogvo) {
+		adminDao.write(blogvo);
 	}
 }

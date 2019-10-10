@@ -16,15 +16,15 @@
 			<ul>
 				<li><a href="">로그인</a></li>
 				<li><a href="">로그아웃</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/basic">블로그 관리</a></li>
+				<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/basic">블로그 관리</a></li>
 			</ul>
 		</div>
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
-					<li><a href="${pageContext.request.contextPath}/admin/basic">기본설정</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/basic">기본설정</a></li>
 					<li class="selected">카테고리</li>
-					<li><a href="${pageContext.request.contextPath}/admin/write">글작성</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/writeform">글작성</a></li>
 				</ul>
 		      	<table class="admin-cat">
 		      		<tr>

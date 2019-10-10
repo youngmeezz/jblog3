@@ -16,17 +16,17 @@
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/user/login">로그인</a></li>
 				<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/basic">블로그 관리</a></li>
+				<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/basic">블로그 관리</a></li>
 			</ul>
 		</div>
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
 					<li class="selected">기본설정</li>
-					<li><a href="${pageContext.request.contextPath}/admin/category">카테고리</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/write">글작성</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/category">카테고리</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/writeform">글작성</a></li>
 				</ul>
-				<form  method="post" action="${pageContext.request.contextPath}/admin/modify">
+				<form  method="post" action="${pageContext.request.contextPath}/${authUser.id}/admin/modify">
 	 		      	<table class="admin-config">
 			      		<tr>
 			      			<td class="t">블로그 제목</td>

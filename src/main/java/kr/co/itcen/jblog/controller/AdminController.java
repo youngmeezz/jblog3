@@ -53,11 +53,29 @@ public class AdminController {
 		}
 		
 		
-		
 		//블로그 관리 창에서 글작성 창으로 들어가기
-		@RequestMapping(value = "write", method = RequestMethod.GET)
-		public String write(@ModelAttribute UserVo vo) {
+		@RequestMapping(value = "writeform", method = RequestMethod.GET)
+		public String writeform(@ModelAttribute UserVo vo) {
 			return "blog/blog-admin-write";
+		}
+		
+		//글작성 창에서 글 쓰기
+		@RequestMapping(value = "write", method = RequestMethod.POST)
+		public String write(@ModelAttribute BlogVo blogvo,BindingResult result, Model model,HttpSession session) {
+			
+			UserVo authUser = (UserVo) session.getAttribute("authUser");
+			
+			if( result.hasErrors() ) {
+				model.addAllAttributes(result.getModel());
+				return "blog/write";
+			}
+			
+			if (authUser != null) {
+				blogvo.setId(authUser.getId());
+				adminService.write(blogvo);
+			}
+			
+			return "redirect:/" + authUser.getId();
 		}
 		
 		
