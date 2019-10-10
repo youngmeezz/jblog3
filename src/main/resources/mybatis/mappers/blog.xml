@@ -8,7 +8,17 @@
 		<![CDATA[
 		insert 
 			into blog 
-		values(#{id},#{name}"블로그 입니다.", "default.jpg")
+		values(#{id},concat(#{title},"님의 블로그 입니다."), "/assets/images/spring-logo.jpg")
 		]]>
 	</insert>
+	
+	<!-- 블로그정보 업데이트  -->
+	<update id="update" parameterType="blogvo">
+		<![CDATA[
+		update blog
+			set title = #{title}, logo = #{logo}
+		where id = #{id};
+		]]>
+	</update>
+	
 </mapper>

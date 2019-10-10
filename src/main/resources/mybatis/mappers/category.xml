@@ -11,4 +11,18 @@
 		values(null, default, "카테고리 설명입니다", now(), #{id})
 		]]>
 	</insert>
+	
+	<!-- 카테고리정보 가져오기  -->
+	<select id="getList" parameterType="categoryvo" resultType="categoryvo">
+		<![CDATA[
+		select no as 'categoryNo',
+			   name as 'name',
+			   description as 'description',
+			   reg_date as 'regDate',
+			   id as 'id'
+			from category
+			where id = #{id}
+		]]>
+	</select>
+
 </mapper>

@@ -2,18 +2,20 @@ package kr.co.itcen.jblog.vo;
 
 public class CategoryVo {
 
-	private int no;
+
+
+	private Long categoryNo;
 	private String name;
 	private String description;
 	private String regDate;
 	private String id;
 	
 	
-	public int getNo() {
-		return no;
+	public Long getCategoryNo() {
+		return categoryNo;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setCategoryNo(Long categoryNo) {
+		this.categoryNo = categoryNo;
 	}
 	public String getName() {
 		return name;
@@ -42,8 +44,9 @@ public class CategoryVo {
 
 	@Override
 	public String toString() {
-		return "CategoryVo [no=" + no + ", name=" + name + ", description=" + description + ", regDate=" + regDate
-				+ ", id=" + id + "]";
+		return "CategoryVo [categoryNo=" + categoryNo + ", name=" + name + ", description=" + description + ", regDate="
+				+ regDate + ", id=" + id + "]";
 	}
-
+	
+	
 }

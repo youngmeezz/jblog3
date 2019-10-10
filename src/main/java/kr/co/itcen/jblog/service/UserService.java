@@ -30,7 +30,6 @@ public class UserService {
 	//회원 가입 정보 insert
 	public void join(UserVo vo) {
 			
-			System.out.println("회원가입 합니다");
 			userDao.insert(vo);
 			blogDao.insert(vo);
 			categoryDao.insert(vo);

@@ -1,5 +1,6 @@
 package kr.co.itcen.jblog.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,6 @@ public class UserController {
 			model.addAllAttributes(result.getModel());
 			return "user/join";
 		}
-		System.out.println("콘트롤러");
 		userService.join(vo);
 		return "redirect:/user/joinsuccess";
 	}
@@ -47,9 +47,39 @@ public class UserController {
 		return "user/joinsuccess";
 	}
 	
-	//로그인 하기
+	//로그인 폼 들어가기
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login() {
 		return "user/login";
 	}
+	
+	
+	//로그인
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(UserVo vo, HttpSession session, Model model) {
+
+		UserVo userVo = userService.getUser(vo);
+		if (userVo == null) {
+			model.addAttribute("result", "fail");
+			return "user/login";
+		}
+		// 로그인 처리
+		session.setAttribute("authUser", userVo);
+		return "redirect:/";
+	}
+
+	
+	// 로그아웃 -> interceptor 처리하기
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		// 접근 제어(ACL)
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		if (authUser != null) {
+			session.removeAttribute("authUser");
+			session.invalidate();
+		}
+		return "redirect:/";
+	}	
+
+	
 }
