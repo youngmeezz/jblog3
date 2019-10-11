@@ -23,7 +23,6 @@
 				<input type="radio" name="which" value="blog-user"> <label>블로거</label>
 			</fieldset>
 		</form>
-<%-- 		<c:import url="/WEB-INF/views/includes/navigation.jsp"/> --%>
 		<c:import url="/WEB-INF/views/includes/footer.jsp"/>
 	</div>
 </body>

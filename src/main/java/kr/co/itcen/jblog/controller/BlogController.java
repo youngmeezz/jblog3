@@ -51,9 +51,6 @@ public class BlogController {
 			
 			categoryNo = pathNo1.get();
 	
-		} else {
-			
-			
 		}
 		
 		//카테고리 정보 조회하기

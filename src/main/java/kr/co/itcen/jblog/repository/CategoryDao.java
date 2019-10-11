@@ -42,10 +42,10 @@ public class CategoryDao {
 		return list;
 	}
 	//카테고리조회하기
-		public List<CategoryVo> getList(CategoryVo categoryvo) {
-				
-			List<CategoryVo> list = sqlSession.selectList("category.getList", categoryvo);
-			return list;
-		}
+	public List<CategoryVo> getList(CategoryVo categoryvo) {
+			
+		List<CategoryVo> list = sqlSession.selectList("category.getList", categoryvo);
+		return list;
+	}
 
 }

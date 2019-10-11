@@ -66,11 +66,7 @@
 		      	</table> 
 			</div>
 		</div>
-		<div id="footer">
-			<p>
-				<strong>Spring 이야기</strong> is powered by JBlog (c)2016
-			</p>
-		</div>
+		
 
 		<!-- 카테고리  ajax 구현 -->
 		<script>
@@ -165,6 +161,7 @@
 		} 
 		
 		</script>
+		<c:import url="/WEB-INF/views/includes/footer.jsp"/> 
 	</div>
 </body>
 </html>
