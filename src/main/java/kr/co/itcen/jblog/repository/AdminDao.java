@@ -21,18 +21,22 @@ public class AdminDao {
 		int result = sqlSession.update("blog.update",blogvo);
 		return result == 1;
 	}
+	
+	//파일 업로드 하기
+	
 
-	//글쓰기 창 작성하기
-	public List<PostVo> write(BlogVo blogvo) {
+	//게시글 정보읽기
+	public List<PostVo> getList(Long categoryNo) {
 		
-		List<PostVo> result = sqlSession.selectList("post.selectList",blogvo);
+	
+		List<PostVo> result = sqlSession.selectList("post.selectList",categoryNo);
 		return result;
 	}
 
 	//게시글 정보 넣기
-//	public Boolean write(BlogVo blogvo) {
-//
-//		int result = sqlSession.write("post.write",blogvo);
-//		return result == 1;
-//	}
+	public Boolean write(PostVo	postvo) {
+
+		int result = sqlSession.insert("post.insert",postvo);
+		return result == 1;
+	}
 }

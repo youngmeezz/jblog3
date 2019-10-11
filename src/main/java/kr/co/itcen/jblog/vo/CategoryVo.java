@@ -4,12 +4,21 @@ public class CategoryVo {
 
 
 
+
 	private Long categoryNo;
 	private String name;
 	private String description;
 	private String regDate;
 	private String id;
+	private int postCnt;
 	
+	
+	public int getPostCnt() {
+		return postCnt;
+	}
+	public void setPostCnt(int postCnt) {
+		this.postCnt = postCnt;
+	}
 	
 	public Long getCategoryNo() {
 		return categoryNo;
@@ -45,8 +54,8 @@ public class CategoryVo {
 	@Override
 	public String toString() {
 		return "CategoryVo [categoryNo=" + categoryNo + ", name=" + name + ", description=" + description + ", regDate="
-				+ regDate + ", id=" + id + "]";
+				+ regDate + ", id=" + id + ", postCnt=" + postCnt + "]";
 	}
 	
-	
+
 }

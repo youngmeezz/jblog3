@@ -16,6 +16,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	//아이디 중복체크 ajax
 	@ResponseBody
 	@RequestMapping("/checkid")
 	public JSONResult checkid(@RequestParam(value="id", required=true, defaultValue="")String id) {

@@ -5,11 +5,9 @@
 
 	<!-- 회원정보 넣기  -->
 	<insert id="insert" parameterType="uservo">
-		<![CDATA[
 		insert 
 			into users 
 		values(#{id},#{name},#{password},now())
-		]]>
 		<selectKey keyProperty="no" resultType="long" order="AFTER">
 			<![CDATA[
 				select last_insert_id()
@@ -19,21 +17,17 @@
 	
 	<!-- 로그인 정보 가져오기 -->
 	<select id="getIdAndPassword" parameterType="uservo" resultType="uservo">
-		<![CDATA[
 			select  id as 'id',
 					name as 'name',
 					join_date as 'joinDate'
 				from users 
 			where id = #{id} and password = #{password}
-		]]>
 	</select>
 	
 	<!-- id 중복 체크하기 -->
 	<select id="getById" parameterType="string" resultType="uservo">
-		<![CDATA[
 			select  id, password
 				from users 
 			where id = #{id}
-		]]>
 	</select>
 </mapper>

@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import kr.co.itcen.jblog.repository.BlogDao;
 import kr.co.itcen.jblog.repository.CategoryDao;
 import kr.co.itcen.jblog.repository.UserDao;
-import kr.co.itcen.jblog.vo.BlogVo;
-import kr.co.itcen.jblog.vo.CategoryVo;
 import kr.co.itcen.jblog.vo.UserVo;
 
 @Service

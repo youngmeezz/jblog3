@@ -5,24 +5,34 @@
 
 	<!-- 카테고리정보 넣기  -->
 	<insert id="insert" parameterType="uservo">
-		<![CDATA[
 		insert 
 			into category 
 		values(null, default, "카테고리 설명입니다", now(), #{id})
-		]]>
 	</insert>
 	
-	<!-- 카테고리정보 가져오기  -->
-	<select id="getList" parameterType="categoryvo" resultType="categoryvo">
-		<![CDATA[
-		select no as 'categoryNo',
-			   name as 'name',
-			   description as 'description',
-			   reg_date as 'regDate',
-			   id as 'id'
-			from category
-			where id = #{id}
-		]]>
+	<!-- 카테고리정보 가져오기(여기서 포스트 개수도 넣어야함)  -->
+	<select id="getList" parameterType="categoryvo" resultType="categoryvo">	
+		select	c.no as 'categoryNo',
+		 		c.name as 'name',
+		  		c.description as 'description',
+		   		count(p.category_no) as 'postCnt'
+		 from	category as c
+		 left join post as p on c.no = p.category_no
+		 group	by c.id, c.no, c.name, c.description, p.category_no
+		 order	by c.no asc;
 	</select>
+	
+	<!-- 새로운 카테고리정보 넣기  -->
+	<insert id="newInsert" parameterType="categoryvo">
+		insert 
+			into category 
+		values(null, #{name} , #{description}, now(), #{id})
+		<selectKey keyProperty="categoryNo" resultType="long">
+			select last_insert_id();
+		</selectKey>
+	</insert>
 
+
+	
+	
 </mapper>

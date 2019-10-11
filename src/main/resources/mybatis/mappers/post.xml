@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="blog">
+<mapper namespace="post">
 
 	<!-- 게시글 삽입 create먼저 해야지 읽을 수 있음 -->
-<!-- 	<insert id =  -->
-
-
+	<insert id="insert" parameterType="postvo">
+		insert 
+			into post
+		values(null,#{title},#{content},now(),#{categoryNo})
+		<selectKey keyProperty="no" resultType="long" order="AFTER">
+				select last_insert_id()
+		</selectKey>
+	</insert>
+	
 	<!-- 게시글 정보 읽기  -->
-	<select id="selectList" parameterType="postvo" resultType="postvo">
-		<![CDATA[
+	<select id="selectList" parameterType="long" resultType="postvo">
 			select no as 'postNo',
 			   title as 'title',
 			   content as 'content',
 			   reg_date as 'regDate',
 			   category_no as 'categoryNo'
 			from post
-			where no = #{no}
-		]]>
+			where category_no = #{ categoryNo }
 	</select>
+	
+	<!-- 포스트 개수 정보 가져오기  -->
+		
+		
 </mapper>
