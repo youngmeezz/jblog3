@@ -31,4 +31,11 @@ public class BlogDao {
 		return result;
 	}
 	
+	public BlogVo get(String id) {
+		
+		BlogVo result = sqlSession.selectOne("blog.get",id);
+		System.out.println(id);
+		return result;
+	}
+	
 }

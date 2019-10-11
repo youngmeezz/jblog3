@@ -5,20 +5,24 @@
 
 	<!-- 블로그정보 넣기  -->
 	<insert id="insert" parameterType="uservo">
-		<![CDATA[
 		insert 
 			into blog 
 		values(#{id},concat(#{title},"님의 블로그 입니다."), "/assets/images/spring-logo.jpg")
-		]]>
 	</insert>
 	
 	<!-- 블로그정보 업데이트  -->
 	<update id="update" parameterType="blogvo">
-		<![CDATA[
 		update blog
 			set title = #{title}, logo = #{logo}
 		where id = #{id};
-		]]>
 	</update>
+	
+	<!-- 블로그정보 조회하기  -->
+	<select id="get" parameterType="string" resultType="blogvo">
+		select title, logo
+			from blog
+		where id = #{id};
+	</select>
+	
 	
 </mapper>

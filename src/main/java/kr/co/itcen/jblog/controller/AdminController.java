@@ -27,7 +27,7 @@ public class AdminController {
 			return "blog/blog-admin-basic";
 		}
 		
-		//블로그 관리창에서 제목이랑 사진 수정하기 (보류중)
+		//블로그 관리창에서 제목이랑 사진 수정하기
 		@RequestMapping(value= "modify", method = RequestMethod.POST)
 		public String modify(@ModelAttribute BlogVo blogvo, BindingResult result, Model model, HttpSession session) {
 			
@@ -52,6 +52,8 @@ public class AdminController {
 			return "blog/blog-admin-category";
 		}
 		
+		//카테고리 창에서 카테고리 수정하기
+//		@RequestMapping(value = "category" method = RequestMethod.POST)
 		
 		//블로그 관리 창에서 글작성 창으로 들어가기
 		@RequestMapping(value = "writeform", method = RequestMethod.GET)

@@ -15,6 +15,7 @@ public class AdminService {
 		adminDao.update(blogvo);
 	}
 	
+	//글쓰기 창 작성하기
 	public void write(BlogVo blogvo) {
 		adminDao.write(blogvo);
 	}

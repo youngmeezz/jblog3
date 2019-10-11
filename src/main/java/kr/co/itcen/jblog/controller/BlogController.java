@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import kr.co.itcen.jblog.service.BlogService;
+import kr.co.itcen.jblog.vo.BlogVo;
 import kr.co.itcen.jblog.vo.CategoryVo;
 import kr.co.itcen.jblog.vo.UserVo;
 
@@ -39,9 +40,16 @@ public class BlogController {
 		Long categoryNo = 0L;
 		Long postNo = 0L;
 		
+		//카테고리 정보 조회하기
 		List<CategoryVo> list = blogService.getList(id);
 		//System.out.println(list.size());
 		model.addAttribute("list",list);
+		
+		//블로그 업데이트 한 거 조회하기
+		BlogVo blogvo = blogService.getBlogInfo(id);
+		model.addAttribute("blogvo",blogvo);
+		
+		
 		
 		if( pathNo2.isPresent() ) {
 			

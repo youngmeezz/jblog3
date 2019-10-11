@@ -15,12 +15,14 @@ public class AdminDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	//블로그 title, logo 변경하기
 	public Boolean update(BlogVo blogvo) {
 		
 		int result = sqlSession.update("blog.update",blogvo);
 		return result == 1;
 	}
 
+	//글쓰기 창 작성하기
 	public List<PostVo> write(BlogVo blogvo) {
 		
 		List<PostVo> result = sqlSession.selectList("post.selectList",blogvo);

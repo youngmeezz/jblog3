@@ -25,7 +25,7 @@ public class BlogService {
 	@Autowired
 	private CategoryDao categoryDao;
 	
-	public Map<String, Object> getAll(String id, Long categoryNo, Long postNo ) {
+	public BlogVo getAll(String id, Long categoryNo, Long postNo ) {
 		
 		BlogVo blogVo = getBlogInfo( id );
 		PostVo postVo = viewPost( postNo );
@@ -41,7 +41,7 @@ public class BlogService {
 		map.put( "currentPost", postNo );
 		map.put( "currentCategory", categoryNo );
 
-		return map;
+		return (BlogVo) map;
 	}
 
 	private List<CategoryVo> getCategoryList(String id) {
@@ -59,11 +59,13 @@ public class BlogService {
 		return null;
 	}
 
-	private BlogVo getBlogInfo(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	//블로그 정보 조회하기
+	public BlogVo getBlogInfo(String id) {
+
+		return blogDao.get(id);
 	}
 
+	//카테고리 정보 조회하기
 	public List<CategoryVo> getList(String id) {
 		
 		return blogDao.getList(id);

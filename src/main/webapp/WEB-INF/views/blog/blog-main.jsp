@@ -12,7 +12,8 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1>Spring 이야기</h1>
+		<!-- 	<h1>Spring 이야기</h1> -->
+		<h1>${blogvo.title }</h1>
 			<ul>
 				<li><a href="">로그인</a></li>
 				<li><a href="">로그아웃</a></li>
@@ -42,7 +43,8 @@
 
 		<div id="extra">
 			<div class="blog-logo">
-				<img src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
+			<%-- 	<img src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg"> --%>
+					<img src="${pageContext.request.contextPath}/${blogvo.logo}">
 			</div>
 		</div>
 
