@@ -23,6 +23,5 @@
 			from blog
 		where id = #{id};
 	</select>
-	
-	
+
 </mapper>

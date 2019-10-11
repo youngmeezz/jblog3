@@ -33,7 +33,7 @@
 			      			<td><input type="text" size="40" name="title">${blogvo.title }</td>
 			      		</tr>
 			      		<tr>
-			      			<td class="t">로고이미지</td>
+			      			<td class="blog-logo">로고이미지</td>
 			      			<td><img src="${pageContext.request.contextPath}${blogvo.logo}"></td>      			
 			      		</tr>      		
 			      		<tr>
