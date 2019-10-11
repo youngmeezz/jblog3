@@ -7,32 +7,48 @@
 	<insert id="insert" parameterType="uservo">
 		insert 
 			into category 
-		values(null, default, "카테고리 설명입니다", now(), #{id})
+		values(null, default, "카테고리 설명입니다", now(), 1, #{id})
 	</insert>
 	
 	<!-- 카테고리정보 가져오기(여기서 포스트 개수도 넣어야함)  -->
-	<select id="getList" parameterType="categoryvo" resultType="categoryvo">	
-		select	c.no as 'categoryNo',
-		 		c.name as 'name',
-		  		c.description as 'description',
-		   		count(p.category_no) as 'postCnt'
+	<select id="getList" parameterType="categoryvo" resultType="categoryvo">
+	<![CDATA[
+		select	c.no as categoryNo,
+		 		c.name as name,
+		  		c.description as description,
+		   		count(p.category_no) as postCnt
 		 from	category as c
 		 left join post as p on c.no = p.category_no
+		 where	c.del_yn=1 and c.id=#{id}
 		 group	by c.id, c.no, c.name, c.description, p.category_no
 		 order	by c.no asc;
+	]]> 
+	</select>
+	
+	
+	<select id="listByID" parameterType="string" resultType="categoryvo">	
+		select no as 'categoryNo',
+			 name as 'name',
+			 description as 'description'
+		from category
+		where id = #{id}
 	</select>
 	
 	<!-- 새로운 카테고리정보 넣기  -->
 	<insert id="newInsert" parameterType="categoryvo">
 		insert 
 			into category 
-		values(null, #{name} , #{description}, now(), #{id})
+		values(null, #{name} , #{description}, now(), 1, #{id})
 		<selectKey keyProperty="categoryNo" resultType="long">
 			select last_insert_id();
 		</selectKey>
 	</insert>
-
-
 	
-	
+	<!-- 카테고리 삭제  -->
+	<insert id="delete" parameterType="categoryvo">
+		update	
+			category
+		set	del_yn = 0
+		 where	no=#{categoryNo} and id=#{id}
+	</insert>
 </mapper>

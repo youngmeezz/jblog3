@@ -18,7 +18,7 @@ import kr.co.itcen.jblog.vo.PostVo;
 
 
 @Controller
-@RequestMapping("/{id:(?!assets).*}")
+@RequestMapping("/{id:(?!assets)(?!images).*}")
 
 public class BlogController {
 
@@ -68,17 +68,10 @@ public class BlogController {
 		//게시글 리스트 조회하기
 		List<PostVo> p_list = adminService.getList(categoryNo);
 		model.addAttribute("p_list",p_list);
-		
-		
-		
 
-		//modelMap.putAll( blogService.getAll( id, categoryNo, postNo ) );
+
 		return "blog/blog-main";
 	}
 	
-//	@ResponseBody
-//	@RequestMapping( "/admin/basic" )
-//	public String adminBasic( @PathVariable String id ) {
-//		return "id:" + id;
-//	}
+
 }

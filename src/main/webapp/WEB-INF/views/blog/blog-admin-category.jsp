@@ -38,13 +38,13 @@
 		      			<th>삭제</th>      			
 		      		</tr>
 		      		
-		      		<c:forEach items="${list}" var="categoryvo">
-						<tr>
+		      		<c:forEach items="${categorylist}" var="categoryvo">
+						<tr id="cid-${categoryvo.categoryNo }">
 							<td>${categoryvo.categoryNo }</td>
 							<td>${categoryvo.name }</td>
 							<td>${categoryvo.postCnt }</td>
 							<td>${categoryvo.description }</td>
-							<td><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>
+							<td><img class="category-delete" src="${pageContext.request.contextPath}/assets/images/delete.jpg" category-no="${categoryvo.categoryNo }"></td>
 						</tr>  
 					</c:forEach>	  
 				</table>
@@ -76,26 +76,27 @@
 		<script>
 		$(function() {
 			$('#category-add-btn').on('click', addCategory)
-	/* 		$('.category-delete').on('click', deleteCategory) */
+	 		$('.category-delete').on('click', deleteCategory) 
 			
 		})
 		
-/* 		function deleteCategory(event) {
+ 		function deleteCategory(event) {
 			let categoryNo = $(event.target).attr('category-no')
 			
 			$.ajax({
-				url: '${pageContext.request.contextPath}/api/${sessionScope.authUser.id}/admin/category?no=' + categoryNo,
-				method: 'delete',
-				dataType: 'json',
+				url: '${pageContext.request.contextPath}/api/${authUser.id}/admin/categoryDelete',
+				method: 'post',
+				data: {
+					categoryNo: categoryNo
+				},
 				success: function(response) {
-					console.log(response)
-					removeCategory(categoryNo)
+					removeCategory(response)
 				},
 				error: function(error) {
 					console.log('error', error)
 				}
 			})
-		} */
+		} 
 		
  		function addCategory() {
 			let category = {
@@ -149,21 +150,19 @@
 			let deleteTdTag = $('<td/>')
 			let deleteImgTag = $('<img/>')
 			deleteImgTag.attr('src', '${pageContext.request.contextPath}/assets/images/delete.jpg')
-/* 			deleteImgTag.attr('class', 'category-delete') */
+ 			deleteImgTag.attr('class', 'category-delete') 
 			deleteImgTag.attr('id', 'category-' + category.categoryNo)
 			deleteImgTag.attr('category-no', category.categoryNo)
-/* 			deleteImgTag.on('click', deleteCategory) */
+ 			deleteImgTag.on('click', deleteCategory) 
 			deleteTdTag.append(deleteImgTag)
 			trTag.append(deleteTdTag)
 			
 			$('#category-table').append(trTag)
 		}
 		
-	/* 	function removeCategory(categoryNo) {
-			let kk = $('#category-table').children('tr#cid-' + categoryNo)
-			console.log(kk)
-			$('#category-table tr').remove('#cid-' + categoryNo)
-		} */
+	 	function removeCategory(category) {
+			$('#category-table tr').remove('#cid-' + category.categoryNo)
+		} 
 		
 		</script>
 	</div>

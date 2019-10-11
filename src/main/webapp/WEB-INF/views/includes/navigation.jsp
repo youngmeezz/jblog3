@@ -7,7 +7,7 @@
 		<h2>카테고리</h2>
 		<ul>
 			<c:forEach items="${list}" var="categoryvo">
-				<li><a href="${pageContext.servletContext.contextPath }/${categoryvo.id }/${categoryvo.categoryNo}">${categoryvo.name}</a></li>
+				<li><a href="${pageContext.servletContext.contextPath }/${id }/${categoryvo.id }/${categoryvo.categoryNo}">${categoryvo.name}</a></li>
 			</c:forEach>
 		</ul>
 		<!-- <ul>

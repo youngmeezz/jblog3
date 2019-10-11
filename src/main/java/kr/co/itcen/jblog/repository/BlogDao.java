@@ -24,7 +24,7 @@ public class BlogDao {
 		return cnt==1; 
 	}
 
-	public List<CategoryVo> getList(String id) {
+	public List<CategoryVo> categoryList(String id) {
 		
 		List<CategoryVo> result = sqlSession.selectList("category.getList",id);
 		System.out.println(id);
@@ -36,6 +36,13 @@ public class BlogDao {
 		BlogVo result = sqlSession.selectOne("blog.get",id);
 		System.out.println(id);
 		return result;
+	}
+
+	//블로그 title, logo 변경하기
+	public Boolean update(BlogVo blogvo) {
+		
+		int result = sqlSession.update("blog.update",blogvo);
+		return result == 1;
 	}
 	
 }

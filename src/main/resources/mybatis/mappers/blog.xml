@@ -7,7 +7,7 @@
 	<insert id="insert" parameterType="uservo">
 		insert 
 			into blog 
-		values(#{id},concat(#{title},"님의 블로그 입니다."), "/assets/images/spring-logo.jpg")
+		values(#{id},concat(#{name},"님의 블로그 입니다."), "/assets/images/spring-logo.jpg");
 	</insert>
 	
 	<!-- 블로그정보 업데이트  -->

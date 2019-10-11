@@ -36,8 +36,19 @@ public class CategoryApiController {
 	}
 	
 	//카테고리 창에서 카테고리 삭제하기
-//	@RequestMapping(value = "categoryDelete", method = RequestMethod.POST)
-//	public String categoryDelete(@ModelAttribute CategoryVo categoryvo,BindingResult result, Model model,HttpSession session) {
-//		
-//	}
+	@RequestMapping(value = "categoryDelete", method = RequestMethod.POST)
+	public CategoryVo categoryDelete(@ModelAttribute CategoryVo categoryvo,BindingResult result, Model model,HttpSession session) {
+		
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser != null) {
+			categoryvo.setId(authUser.getId());
+			categoryService.delete(categoryvo);			
+		}
+		
+		return categoryvo;
+	}
+	
+	
+		
 }

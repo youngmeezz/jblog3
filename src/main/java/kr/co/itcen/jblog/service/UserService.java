@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import kr.co.itcen.jblog.repository.BlogDao;
 import kr.co.itcen.jblog.repository.CategoryDao;
 import kr.co.itcen.jblog.repository.UserDao;
+import kr.co.itcen.jblog.vo.BlogVo;
 import kr.co.itcen.jblog.vo.UserVo;
 
 @Service
@@ -27,7 +28,7 @@ public class UserService {
 	
 	//회원 가입 정보 insert
 	public void join(UserVo vo) {
-			
+			System.out.println("join : " + vo);
 			userDao.insert(vo);
 			blogDao.insert(vo);
 			categoryDao.insert(vo);

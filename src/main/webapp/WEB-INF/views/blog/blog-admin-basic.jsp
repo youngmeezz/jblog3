@@ -26,7 +26,7 @@
 					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/categoryform">카테고리</a></li>
 					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/writeform">글작성</a></li>
 				</ul>
-				<form  method="post" action="${pageContext.request.contextPath}/${authUser.id}/admin/modify">
+				<form  method="post" action="${pageContext.request.contextPath}/${authUser.id}/admin/modify" enctype="multipart/form-data">
 	 		      	<table class="admin-config">
 			      		<tr>
 			      			<td class="t">블로그 제목</td>
@@ -34,7 +34,7 @@
 			      		</tr>
 			      		<tr>
 			      			<td class="t">로고이미지</td>
-			      			<td><img src="${pageContext.request.contextPath}/${blogvo.logo}"></td>      			
+			      			<td><img src="${pageContext.request.contextPath}${blogvo.logo}"></td>      			
 			      		</tr>      		
 			      		<tr>
 			      			<td class="t">&nbsp;</td>

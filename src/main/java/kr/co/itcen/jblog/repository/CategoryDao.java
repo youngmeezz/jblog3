@@ -1,5 +1,7 @@
 package kr.co.itcen.jblog.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,6 +29,23 @@ public class CategoryDao {
 		return cnt == 1;
 	}
 
+	public Boolean delete(CategoryVo categoryvo) {
 
+		int cnt = sqlSession.delete("category.delete", categoryvo);
+
+		return cnt == 1;
+	}
+
+	public List<CategoryVo> getList(String id) {
+	
+		List<CategoryVo> list = sqlSession.selectList("category.listByID", id);
+		return list;
+	}
+	//카테고리조회하기
+		public List<CategoryVo> getList(CategoryVo categoryvo) {
+				
+			List<CategoryVo> list = sqlSession.selectList("category.getList", categoryvo);
+			return list;
+		}
 
 }

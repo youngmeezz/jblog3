@@ -22,9 +22,6 @@
 			   category_no as 'categoryNo'
 			from post
 			where category_no = #{ categoryNo }
-	</select>
-	
-	<!-- 포스트 개수 정보 가져오기  -->
-		
+	</select>	
 		
 </mapper>

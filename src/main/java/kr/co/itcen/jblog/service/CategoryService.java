@@ -1,5 +1,7 @@
 package kr.co.itcen.jblog.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,12 @@ public class CategoryService {
 
 			categoryDao.newInsert(categoryvo);
 		}
+	
+	
+	//카테고리 삭제
+	public void delete(CategoryVo categoryvo) {
+
+			categoryDao.delete(categoryvo);
+		}
+	
 }

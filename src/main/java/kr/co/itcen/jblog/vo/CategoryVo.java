@@ -2,23 +2,13 @@ package kr.co.itcen.jblog.vo;
 
 public class CategoryVo {
 
-
-
-
 	private Long categoryNo;
 	private String name;
 	private String description;
 	private String regDate;
+	private int delYn;
 	private String id;
 	private int postCnt;
-	
-	
-	public int getPostCnt() {
-		return postCnt;
-	}
-	public void setPostCnt(int postCnt) {
-		this.postCnt = postCnt;
-	}
 	
 	public Long getCategoryNo() {
 		return categoryNo;
@@ -44,18 +34,31 @@ public class CategoryVo {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+	public int getDelYn() {
+		return delYn;
+	}
+	public void setDelYn(int delYn) {
+		this.delYn = delYn;
+	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	public int getPostCnt() {
+		return postCnt;
+	}
+	public void setPostCnt(int postCnt) {
+		this.postCnt = postCnt;
+	}
+	
 	@Override
 	public String toString() {
 		return "CategoryVo [categoryNo=" + categoryNo + ", name=" + name + ", description=" + description + ", regDate="
-				+ regDate + ", id=" + id + ", postCnt=" + postCnt + "]";
+				+ regDate + ", delYn=" + delYn + ", id=" + id + ", postCnt=" + postCnt + "]";
 	}
+	
 	
 
 }

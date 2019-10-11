@@ -68,7 +68,7 @@ public class BlogService {
 	//카테고리 정보 조회하기
 	public List<CategoryVo> getList(String id) {
 		
-		return blogDao.getList(id);
+		return categoryDao.getList(id);
 	}
 
 }

@@ -28,9 +28,9 @@ public class AdminController {
 
 		@Autowired
 		private AdminService adminService;
-		
 		@Autowired
 		private BlogService blogService;
+		
 		
 		//블로그 관리 창으로 들어가기
 		@RequestMapping(value = "basic", method = RequestMethod.GET)
@@ -39,33 +39,27 @@ public class AdminController {
 		}
 		
 		//블로그 관리창에서 제목이랑 사진 수정하기
-		@RequestMapping(value= "modify", method = RequestMethod.POST)
-		public String modify(@ModelAttribute BlogVo blogvo, BindingResult result, Model model, HttpSession session) {
-			
-			UserVo authUser = (UserVo) session.getAttribute("authUser");
-			
-			if( result.hasErrors() ) {
-				model.addAllAttributes(result.getModel());
-				return "blog/modify";
-			}
-			
-			if (authUser != null) {
-				blogvo.setId(authUser.getId());
-				adminService.update(blogvo);
-			}
-			
-			return "redirect:/" + authUser.getId();
+		@RequestMapping(value = "/modify", method = RequestMethod.POST)
+		public String blogmanage(@RequestParam(value = "logo-file",required = false) MultipartFile multipartFile,
+				@PathVariable String id,
+				BlogVo vo) {
+			vo.setId(id);
+			adminService.restore(multipartFile,vo);
+			return "redirect:/"+id;
 		}
 		
-		//블로그 관리 창에서 카테고리 관리 창으로 들어가기
+		//카테고리 창에서 카테고리 조회하기
 		@RequestMapping(value = "categoryform", method = RequestMethod.GET)
-		public String categoryform(@PathVariable String id, Model model) {
+		public String categorySelect(@PathVariable String id, Model model) {
+				CategoryVo categoryvo = new CategoryVo();
+				categoryvo.setId(id);
+				
+				//카테고리 관리창에서 정보 조회하기
+				List<CategoryVo> categorylist = adminService.select(categoryvo);
+				model.addAttribute("categorylist", categorylist);
 			
-			List<CategoryVo> categoryList = blogService.getList(id);
-			model.addAttribute("list", categoryList);
-			
-			return "blog/blog-admin-category";
-		}
+			return "/blog/blog-admin-category";
+		} 
 		
 		
 		//블로그 관리 창에서 글작성 창으로 들어가기
@@ -96,20 +90,5 @@ public class AdminController {
 			
 			return "redirect:/" + authUser.getId();
 		}
-		
-		
-		//파일 업로드 컨트롤러
-		@RequestMapping("/upload")
-		public String upload(
-				@RequestParam(value = "id", required = true, defaultValue= "")String id,
-				@RequestParam(value = "file1", required = false)MultipartFile multipartFile,
-				Model model) {
-				
-				//System.out.println("email:" + email);
-				
-				String url = adminService.restore(multipartFile);
-				model.addAttribute("url",url);
-				return "result";
-		}
-		
+
 }
