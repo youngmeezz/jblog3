@@ -29,7 +29,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
-			<!-- JCL ?쒖쇅 -->
+			<!-- JCL 제외 -->
 			<exclusions>
 				<exclusion>
 					<groupId>commons-logging</groupId>
@@ -157,6 +157,14 @@
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<finalName>jblog3</finalName>
+			<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
 
 		<plugins>
 
