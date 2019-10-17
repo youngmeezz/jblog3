@@ -31,7 +31,7 @@
 			 name as 'name',
 			 description as 'description'
 		from category
-		where id = #{id}
+		where id = #{id} and del_yn = 1
 	</select>
 	
 	<!-- 새로운 카테고리정보 넣기  -->

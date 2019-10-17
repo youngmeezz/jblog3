@@ -22,6 +22,17 @@
 			   category_no as 'categoryNo'
 			from post
 			where category_no = #{ categoryNo }
+		
+	</select>	
+	
+		<!-- 게시글 정보 읽기  -->
+	<select id="select" parameterType="long" resultType="postvo">
+			select 
+			   title as 'title',
+			   content as 'content'
+			from post
+			where no = #{ postNo }
+		
 	</select>	
 		
 </mapper>

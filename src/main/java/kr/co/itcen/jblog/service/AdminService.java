@@ -97,4 +97,9 @@ public class AdminService {
 		return categoryDao.getList(categoryvo);
 	}
 
+	public PostVo get(Long postNo) {
+
+		return postDao.get(postNo);
+	}
+
 }

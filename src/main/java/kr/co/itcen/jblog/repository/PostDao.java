@@ -30,4 +30,9 @@ public class PostDao {
 		int result = sqlSession.insert("post.insert",postvo);
 		return result == 1;
 	}
+	public PostVo get(Long postNo) {
+		// TODO Auto-generated method stub
+		PostVo vo = sqlSession.selectOne("post.select",postNo);
+		return vo;
+	}
 }

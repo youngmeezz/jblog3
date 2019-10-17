@@ -55,7 +55,9 @@ public class BlogController {
 		
 		//카테고리 정보 조회하기
 		List<CategoryVo> list = blogService.getList(id);
-		//System.out.println(list.size());
+		if(categoryNo==0L && (!list.isEmpty())) {
+			categoryNo=list.get(0).getCategoryNo();
+		}
 		model.addAttribute("list",list);
 		
 		//블로그 업데이트 한 거 조회하기(title, logo)
@@ -65,7 +67,15 @@ public class BlogController {
 		//게시글 리스트 조회하기
 		List<PostVo> p_list = adminService.getList(categoryNo);
 		model.addAttribute("p_list",p_list);
+		
 
+		if(!(p_list.isEmpty()) && postNo==0L) {
+			postNo=p_list.get(0).getPostNo();
+		}
+		//게시판 포스트 조회하기
+		PostVo postvo = adminService.get(postNo);
+		model.addAttribute("postvo",postvo);
+		
 
 		return "blog/blog-main";
 	}

@@ -12,7 +12,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1>Spring 이야기</h1>
+			<h1>${blogvo.title }</h1>
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/user/login">로그인</a></li>
 				<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
@@ -26,7 +26,7 @@
 					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/categoryform">카테고리</a></li>
 					<li class="selected">글작성</li>
 				</ul>
-				<form action="${pageContext.request.contextPath}/${authUser.id}/admin/write" method="post">
+				<form action="${pageContext.request.contextPath}/${authUser.id}/admin/write" method="get">
 			      	<table class="admin-cat-write">
 			      		<tr>
 			      			<td class="t">제목</td>

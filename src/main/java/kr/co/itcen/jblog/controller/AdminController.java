@@ -33,8 +33,10 @@ public class AdminController {
 		
 		
 		//블로그 관리 창으로 들어가기
-		@RequestMapping(value = "basic", method = RequestMethod.GET)
-		public String basic(@ModelAttribute UserVo vo) {
+		@RequestMapping(value = "/basic", method = RequestMethod.GET)
+		public String basic(Model model,@PathVariable String id) {
+			BlogVo vo = blogService.getBlogInfo(id);
+			model.addAttribute("blogvo",vo);
 			return "blog/blog-admin-basic";
 		}
 		
@@ -49,7 +51,7 @@ public class AdminController {
 		}
 		
 		//카테고리 창에서 카테고리 조회하기
-		@RequestMapping(value = "categoryform", method = RequestMethod.GET)
+		@RequestMapping(value = "/categoryform", method = RequestMethod.GET)
 		public String categorySelect(@PathVariable String id, Model model) {
 				CategoryVo categoryvo = new CategoryVo();
 				categoryvo.setId(id);
@@ -63,7 +65,7 @@ public class AdminController {
 		
 		
 		//블로그 관리 창에서 글작성 창으로 들어가기
-		@RequestMapping(value = "writeform", method = RequestMethod.GET)
+		@RequestMapping(value = "/writeform", method = RequestMethod.GET)
 		public String writeform(@PathVariable String id, Model model) {
 			
 			List<CategoryVo> categoryList = blogService.getList(id);
@@ -73,9 +75,9 @@ public class AdminController {
 		}
 		
 		//글작성 창에서 글 쓰기
-		@RequestMapping(value = "write", method = RequestMethod.POST)
+		@RequestMapping(value = "/write", method = RequestMethod.GET)
 		public String write(@ModelAttribute PostVo postvo,BindingResult result, Model model,HttpSession session) {
-			
+						//@RequestParam(value=jsp단에서 name="")
 			UserVo authUser = (UserVo) session.getAttribute("authUser");
 			
 			if( result.hasErrors() ) {
@@ -84,7 +86,7 @@ public class AdminController {
 			}
 			
 			if (authUser != null) {
-				postvo.setCategoryNo(postvo.getCategoryNo());
+//				postvo.setCategoryNo(postvo.getCategoryNo());
 				adminService.write(postvo);
 			}
 			
