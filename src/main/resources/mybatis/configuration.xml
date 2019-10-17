@@ -12,7 +12,5 @@
  		<mapper resource="mybatis/mappers/blog.xml" />
  		<mapper resource="mybatis/mappers/category.xml" /> 
  		<mapper resource="mybatis/mappers/post.xml" /> 
-<!-- 		<mapper resource="mybatis/mappers/guestbook.xml" /> -->
-<!-- 		<mapper resource="mybatis/mappers/board.xml" /> -->
 	</mappers>
 </configuration>
