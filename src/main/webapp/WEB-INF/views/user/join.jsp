@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!doctype html>
 <html>
@@ -66,16 +68,22 @@ $(function(){
 			<li><a href="${pageContext.servletContext.contextPath }/user/logout">로그아웃</a></li>
 			<li><a href="${pageContext.servletContext.contextPath }/blog/blog-main">내블로그</a></li>
 		</ul>
-		<form class="join-form" id="join-form" method="post" action="${pageContext.servletContext.contextPath }/user/join">
+		<form:form  modelAttribute="userVo" class="join-form" id="join-form" method="post" action="${pageContext.servletContext.contextPath }/user/join">
 			<label class="block-label" for="name">이름</label>
-			<input id="name"name="name" type="text" value="">
+				
+			<form:input path="name"/>
+			<p style="font-weight:bold; color:red; text-align:left; padding-left:5px 0 0 0;">
+				<form:errors path="name" />
+			</p>		
 			
 			<label class="block-label" for="blog-id">아이디</label>
-			<input id="id" name="id" type="text"> 
-			
+			<form:input path="id" />
 			<input id="btn-checkid" type="button" value="id 중복체크">
 			<img id="img-id" style="display: none;" src="${pageContext.request.contextPath}/assets/images/check.png">
-
+			<p style="font-weight:bold; color:red; text-align:left; padding-left:5px 0 0 0;">
+				<form:errors path="id" />
+			</p>	
+		
 			<label class="block-label" for="password">패스워드</label>
 			<input id="password" name="password" type="password" />
 
@@ -87,7 +95,7 @@ $(function(){
 
 			<input type="submit" value="가입하기">
 
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

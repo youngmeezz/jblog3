@@ -28,7 +28,7 @@ public class UserController {
 	
 	//회원 가입 했을때 GET해서 뿌려줄 데이터 값 url 매핑 (회원 가입 실행하기)
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String join() {
+	public String join(@ModelAttribute UserVo vo) {
 		
 		return "user/join";
 	}
